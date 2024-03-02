@@ -2,7 +2,8 @@ const express = require('express')
 const app = express();
 require('dotenv').config();
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const cors = require('cors')
 
 const routerApiVer1 = require("./api/v1/router/index.router");
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 routerApiVer1(app);
+app.use(cors())
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
